@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="ma_go_bu_da.ma_go_bu_da" class="manuxi\GoogleBusinessDataBundle\ManuxiGoogleBusinessData" public="true">
+            <argument type="service" id="ma_go_bu_da.connector"/>
+            <argument type="service" id="ma_go_bu_da.cache"/>
+        </service>
+        <service id="manuxi\GoogleBusinessDataBundle\ManuxiGoogleBusinessData" alias="ma_go_bu_da.ma_go_bu_da" />
+
+        <service id="ma_go_bu_da.connector" class="manuxi\GoogleBusinessDataBundle\Service\Connector" />
+        <service id="ma_go_bu_da.cache" class="manuxi\GoogleBusinessDataBundle\Service\Cache" />
+
+    </services>
+</container>
