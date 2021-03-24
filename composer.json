@@ -1,6 +1,6 @@
 {
     "name": "manuxi/google-reviews-bundle",
-    "description": "Bundle to get Googles reviews easily",
+    "description": "Bundle to get Google reviews easily",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
