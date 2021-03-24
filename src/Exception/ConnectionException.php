@@ -1,6 +1,6 @@
 <?php
 
-namespace manuxi\GoogleBusinessDataBundle\Exception;
+namespace Manuxi\GoogleReviewsBundle\Exception;
 
 use Exception;
 

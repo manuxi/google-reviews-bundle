@@ -1,15 +1,15 @@
 <?php
 
-namespace manuxi\GoogleBusinessDataBundle\Service;
+namespace Manuxi\GoogleReviewsBundle\Service;
 
 use const CURLOPT_HTTPHEADER;
 use const CURLOPT_RETURNTRANSFER;
 use const CURLOPT_URL;
 use const CURLOPT_USERAGENT;
-use manuxi\GoogleBusinessDataBundle\Exception\ConnectionException;
+use Manuxi\GoogleReviewsBundle\Exception\ConnectionException;
 use stdClass;
 
-class Connector
+class CurlConnector implements ConnectorInterface
 {
     public const STATUS_OK  = 'OK';
 
@@ -41,8 +41,9 @@ class Connector
 
     /**
      * @throws ConnectionException
+     * @return stdClass
      */
-    public function getResult(): stdClass
+    public function getResult()
     {
         if ($this->hasError()) {
             throw new ConnectionException($this->getDecodedResult()->error_message);
@@ -50,7 +51,10 @@ class Connector
         return $this->getDecodedResult()->result;
     }
 
-    public function hasError(): bool
+    /**
+     * @return bool
+     */
+    public function hasError()
     {
         if (self::STATUS_OK === $this->getStatus()) {
             return false;
@@ -58,12 +62,18 @@ class Connector
         return true;
     }
 
-    public function getStatus(): string
+    /**
+     * @return string
+     */
+    private function getStatus()
     {
         return $this->getDecodedResult()->status;
     }
 
-    private function getResponse(): string
+    /**
+     * @return string
+     */
+    private function getResponse()
     {
         if (null === $this->result) {
             $curlHandle = \curl_init();
@@ -78,12 +88,18 @@ class Connector
         return $this->result;
     }
 
+    /**
+     * @return mixed
+     */
     private function getDecodedResult()
     {
         return \json_decode($this->getResponse());
     }
 
-    private function getEndpoint(): string
+    /**
+     * @return string
+     */
+    private function getEndpoint()
     {
         return \sprintf(
             self::ENDPOINT,
@@ -92,6 +108,9 @@ class Connector
         );
     }
 
+    /**
+     * @return string
+     */
     public function getCacheKey()
     {
         return $this->cid . $this->apiKey;
