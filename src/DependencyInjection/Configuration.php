@@ -1,6 +1,6 @@
 <?php
 
-namespace manuxi\GoogleBusinessDataBundle\DependencyInjection;
+namespace Manuxi\GoogleReviewsBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -24,10 +24,11 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->arrayNode('connector')
+                    ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('locale')->defaultValue('en')->end()
-                        ->scalarNode('cid')->cannotBeEmpty()->end()
-                        ->scalarNode('api_key')->cannotBeEmpty()->end()
+                        ->scalarNode('cid')->cannotBeEmpty()->defaultValue('')->end()
+                        ->scalarNode('api_key')->cannotBeEmpty()->defaultValue('')->end()
                     ->end()
                 ->end()
             ->end()
@@ -43,7 +44,7 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->booleanNode('enabled')->defaultTrue()->end()
                         ->scalarNode('pool')->defaultValue('cache.app')->end()
-                        ->integerNode('lifetime')
+                        ->integerNode('ttl')
                             ->info('Lifetime, between 60 and 2419200 (1min and 28 days')
                             ->min(60)
                             ->max(2419200)
