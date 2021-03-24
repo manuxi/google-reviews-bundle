@@ -28,8 +28,7 @@ class ManuxiGoogleReviews
     private function getCachedResult()
     {
         if (null === $this->result) {
-//            $this->result = $this->cache->get($this->connector);
-            $this->result = $this->connector->getResult();
+            $this->result = $this->cache->get($this->connector);
         }
     }
 
