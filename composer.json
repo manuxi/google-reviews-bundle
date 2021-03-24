@@ -18,18 +18,17 @@
         "symfony/http-kernel": "^4.0 || ^5.0",
         "symfony/cache": "^4.0 || ^5.0",
         "symfony/serializer": "^4.0 || ^5.0",
-        "symfony/yaml": "^5.2",
-        "symfony/framework-bundle": "^5.2",
-        "symfony/twig-bundle": "^5.2",
+        "symfony/yaml": "^4.0 || ^5.0",
+        "symfony/framework-bundle": "^4.0 || ^5.0",
+        "symfony/twig-bundle": "^4.0 || ^5.0",
         "symfony/monolog-bundle": "^3.6",
-        "symfony/property-access": "^5.2"
+        "symfony/property-access": "^4.0 || ^5.0"
     },
     "require-dev": {
         "jangregor/phpstan-prophecy": "^0.8",
         "symfony/debug-bundle": "^4.0 || ^5.0",
         "symfony/phpunit-bridge": "^4.0 || ^5.0",
-        "matthiasnoback/symfony-dependency-injection-test": "^4.2",
-        "mockery/mockery": "^1.4"
+        "matthiasnoback/symfony-dependency-injection-test": "^4.2"
     },
     "autoload": {
         "psr-4": {
