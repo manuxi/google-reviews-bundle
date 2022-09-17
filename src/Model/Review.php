@@ -109,7 +109,7 @@ class Review
 
     public function getTime(): int
     {
-        return new $this->time();
+        return $this->time;
     }
 
     public function setTime(int $time): void
