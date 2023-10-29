@@ -13,7 +13,7 @@ class CurlConnector implements ConnectorInterface
 {
     public const STATUS_OK  = 'OK';
 
-    private const ENDPOINT  = 'https://maps.googleapis.com/maps/api/place/details/json?cid=%s&key=%s';
+    private const ENDPOINT  = 'https://maps.googleapis.com/maps/api/place/details/json?place_id=%s&key=%s&reviews_sort=newest';
     private const USERAGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36';
     /**
      * @var string
