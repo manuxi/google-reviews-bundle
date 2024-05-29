@@ -9,15 +9,15 @@ interface ConnectorInterface
     /**
      * @return stdClass
      */
-    public function getResult();
+    public function getResult(): stdClass;
 
     /**
      * @return bool
      */
-    public function hasError();
+    public function hasError(): bool;
 
     /**
      * @return string
      */
-    public function getCacheKey();
+    public function getCacheKey(): string;
 }

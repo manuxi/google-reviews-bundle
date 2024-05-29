@@ -25,7 +25,7 @@ class ManuxiGoogleReviews
     /**
      * @throws Exception\ConnectionException|InvalidArgumentException
      */
-    private function getCachedResult()
+    private function getCachedResult(): void
     {
         if (null === $this->result) {
             $this->result = $this->cache->get($this->connector);
@@ -48,7 +48,7 @@ class ManuxiGoogleReviews
         return $reviews;
     }
 
-    public function getReviewsCount()
+    public function getReviewsCount(): int
     {
         $this->getCachedResult();
 

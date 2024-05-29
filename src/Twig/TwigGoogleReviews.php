@@ -15,7 +15,7 @@ class TwigGoogleReviews extends AbstractExtension
         $this->googleReviews = $googleReviews;
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('get_google_reviews', [$this, 'getReviews']),
@@ -23,12 +23,12 @@ class TwigGoogleReviews extends AbstractExtension
         ];
     }
 
-    public function getReviews(int $offset = 0, int $length = 0)
+    public function getReviews(int $offset = 0, int $length = 0): array
     {
         return $this->googleReviews->getReviews($offset, $length);
     }
 
-    public function getReviewsCount()
+    public function getReviewsCount(): int
     {
         return $this->googleReviews->getReviewsCount();
     }

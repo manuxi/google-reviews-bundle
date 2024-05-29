@@ -34,7 +34,7 @@ class Cache
      * @throws ConnectionException|InvalidArgumentException
      * @return stdClass
      */
-    public function get(ConnectorInterface $connector)
+    public function get(ConnectorInterface $connector): stdClass
     {
         if (null !== $this->cache) {
             $cacheKey  = $connector->getCacheKey();

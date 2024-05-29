@@ -43,7 +43,7 @@ class CurlConnector implements ConnectorInterface
      * @throws ConnectionException
      * @return stdClass
      */
-    public function getResult()
+    public function getResult(): stdClass
     {
         if ($this->hasError()) {
             throw new ConnectionException($this->getDecodedResult()->error_message);
@@ -54,7 +54,7 @@ class CurlConnector implements ConnectorInterface
     /**
      * @return bool
      */
-    public function hasError()
+    public function hasError(): bool
     {
         if (self::STATUS_OK === $this->getStatus()) {
             return false;
@@ -65,7 +65,7 @@ class CurlConnector implements ConnectorInterface
     /**
      * @return string
      */
-    private function getStatus()
+    private function getStatus(): string
     {
         return $this->getDecodedResult()->status;
     }
@@ -99,7 +99,7 @@ class CurlConnector implements ConnectorInterface
     /**
      * @return string
      */
-    private function getEndpoint()
+    private function getEndpoint(): string
     {
         return \sprintf(
             self::ENDPOINT,
@@ -111,7 +111,7 @@ class CurlConnector implements ConnectorInterface
     /**
      * @return string
      */
-    public function getCacheKey()
+    public function getCacheKey(): string
     {
         return $this->cid . $this->apiKey;
     }
