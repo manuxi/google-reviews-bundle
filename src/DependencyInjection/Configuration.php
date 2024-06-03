@@ -8,7 +8,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('manuxi_google_business_data');
         $rootNode    = $treeBuilder->getRootNode();
@@ -19,7 +19,7 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    private function addConnectionSection(ArrayNodeDefinition $rootNode)
+    private function addConnectionSection(ArrayNodeDefinition $rootNode): void
     {
         $rootNode
             ->children()
@@ -35,7 +35,7 @@ class Configuration implements ConfigurationInterface
         ;
     }
 
-    private function addCacheSection(ArrayNodeDefinition $rootNode)
+    private function addCacheSection(ArrayNodeDefinition $rootNode): void
     {
         $rootNode
             ->children()
