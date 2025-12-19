@@ -1,0 +1,25 @@
+services:
+    manuxi_google_reviews.google_reviews:
+        class: Manuxi\GoogleReviewsBundle\ManuxiGoogleReviews
+        public: true
+        arguments:
+            - '@manuxi_google_reviews.connector'
+            - '@manuxi_google_reviews.cache'
+            - '@serializer'
+
+    Manuxi\GoogleReviewsBundle\ManuxiGoogleReviews:
+        alias: manuxi_google_reviews.google_reviews
+
+    manuxi_google_reviews.connector:
+        class: Manuxi\GoogleReviewsBundle\Service\CurlConnector
+
+    manuxi_google_reviews.cache:
+        class: Manuxi\GoogleReviewsBundle\Service\Cache
+
+    twig.extension.manuxi_google_reviews:
+        class: Manuxi\GoogleReviewsBundle\Twig\TwigGoogleReviews
+        public: true
+        arguments:
+            - '@manuxi_google_reviews.google_reviews'
+        tags:
+            - { name: twig.extension }

@@ -1,37 +1,43 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Manuxi\GoogleReviewsBundle;
 
+use Manuxi\GoogleReviewsBundle\Exception\ConnectionException;
 use Manuxi\GoogleReviewsBundle\Model\Review;
 use Manuxi\GoogleReviewsBundle\Service\Cache;
 use Manuxi\GoogleReviewsBundle\Service\ConnectorInterface;
 use Psr\Cache\InvalidArgumentException;
+use stdClass;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class ManuxiGoogleReviews
 {
-    private $cache;
-    private $connector;
-    private $serializer;
-    private $result;
+    private ?stdClass $result = null;
 
-    public function __construct(ConnectorInterface $connector, Cache $cache, SerializerInterface $serializer)
-    {
-        $this->connector  = $connector;
-        $this->cache      = $cache;
-        $this->serializer = $serializer;
+    public function __construct(
+        private readonly ConnectorInterface $connector,
+        private readonly Cache $cache,
+        private readonly SerializerInterface $serializer,
+    ) {
     }
 
     /**
-     * @throws Exception\ConnectionException|InvalidArgumentException
+     * @throws ConnectionException|InvalidArgumentException
      */
-    private function getCachedResult()
+    private function getCachedResult(): void
     {
         if (null === $this->result) {
             $this->result = $this->cache->get($this->connector);
         }
     }
 
+    /**
+     * @return Review[]
+     *
+     * @throws ConnectionException|InvalidArgumentException
+     */
     public function getReviews(int $offset = 0, int $length = 0): array
     {
         $this->getCachedResult();
@@ -42,13 +48,16 @@ class ManuxiGoogleReviews
         }
 
         if (0 !== $offset || 0 !== $length) {
-            $reviews = \array_slice($reviews, $offset, $length);
+            $reviews = \array_slice($reviews, $offset, $length ?: null);
         }
 
         return $reviews;
     }
 
-    public function getReviewsCount()
+    /**
+     * @throws ConnectionException|InvalidArgumentException
+     */
+    public function getReviewsCount(): int
     {
         $this->getCachedResult();
 

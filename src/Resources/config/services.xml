@@ -10,15 +10,14 @@
             <argument type="service" id="manuxi_google_reviews.cache"/>
             <argument type="service" id="serializer"/>
         </service>
-        <service id="Manuxi\GoogleReviewsBundle\ManuxiGoogleReviews" alias="manuxi_google_reviews.google_reviews" />
+        <service id="Manuxi\GoogleReviewsBundle\ManuxiGoogleReviews" alias="manuxi_google_reviews.google_reviews"/>
 
-        <service id="manuxi_google_reviews.connector" class="Manuxi\GoogleReviewsBundle\Service\CurlConnector" />
-        <service id="manuxi_google_reviews.cache" class="Manuxi\GoogleReviewsBundle\Service\Cache" />
+        <service id="manuxi_google_reviews.connector" class="Manuxi\GoogleReviewsBundle\Service\CurlConnector"/>
+        <service id="manuxi_google_reviews.cache" class="Manuxi\GoogleReviewsBundle\Service\Cache"/>
 
         <service id="twig.extension.manuxi_google_reviews" class="Manuxi\GoogleReviewsBundle\Twig\TwigGoogleReviews" public="true">
             <argument type="service" id="manuxi_google_reviews.google_reviews"/>
-            <tag name="twig.extension" />
+            <tag name="twig.extension"/>
         </service>
-
     </services>
 </container>

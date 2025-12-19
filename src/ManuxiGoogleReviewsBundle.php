@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Manuxi\GoogleReviewsBundle;
 
 use Manuxi\GoogleReviewsBundle\DependencyInjection\ManuxiGoogleReviewsExtension;
@@ -10,9 +12,6 @@ class ManuxiGoogleReviewsBundle extends Bundle
 {
     public function getContainerExtension(): ?ExtensionInterface
     {
-        if (null === $this->extension) {
-            $this->extension = new ManuxiGoogleReviewsExtension();
-        }
-        return $this->extension;
+        return $this->extension ??= new ManuxiGoogleReviewsExtension();
     }
 }

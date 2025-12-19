@@ -2,6 +2,8 @@
 composer.lock
 /phpunit.xml
 /tests/cache
-/var/cache
+/var
+.phpunit.cache/
+.php-cs-fixer.cache
 .phpunit.result.cache
-/.idea
+.idea/

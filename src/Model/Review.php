@@ -1,41 +1,26 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Manuxi\GoogleReviewsBundle\Model;
 
 class Review
 {
-    /**
-     * @var string
-     */
-    private $authorName;
-    /**
-     * @var string
-     */
-    private $authorUrl;
-    /**
-     * @var string
-     */
-    private $language;
-    /**
-     * @var string
-     */
-    private $profilePhotoUrl;
-    /**
-     * @var int
-     */
-    private $rating;
-    /**
-     * @var string
-     */
-    private $relativeTimeDescription;
-    /**
-     * @var string
-     */
-    private $text;
-    /**
-     * @var int
-     */
-    private $time;
+    private string $authorName = '';
+
+    private string $authorUrl = '';
+
+    private string $language = '';
+
+    private string $profilePhotoUrl = '';
+
+    private int $rating = 0;
+
+    private string $relativeTimeDescription = '';
+
+    private string $text = '';
+
+    private int $time = 0;
 
     public function getAuthorName(): string
     {
