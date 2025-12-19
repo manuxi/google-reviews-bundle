@@ -4,3 +4,4 @@ composer.lock
 /tests/cache
 /var/cache
 .phpunit.result.cache
+/.idea
